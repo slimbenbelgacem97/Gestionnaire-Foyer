@@ -1,0 +1,170 @@
+-- MySQL dump 10.13  Distrib 5.6.13, for Win32 (x86)
+--
+-- Host: localhost    Database: foyer
+-- ------------------------------------------------------
+-- Server version	5.0.41-community-nt
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Not dumping tablespaces as no INFORMATION_SCHEMA.FILES table on this server
+--
+
+--
+-- Current Database: `foyer`
+--
+
+/*!40000 DROP DATABASE IF EXISTS `foyer`*/;
+
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `foyer` /*!40100 DEFAULT CHARACTER SET latin1 */;
+
+USE `foyer`;
+
+--
+-- Table structure for table `caisse`
+--
+
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `caisse` (
+  `id_opretion` int(11) NOT NULL auto_increment,
+  `mantont` int(11) default NULL,
+  `date` datetime default NULL,
+  `cin` int(11) default NULL,
+  PRIMARY KEY  (`id_opretion`),
+  KEY `cin_idx` (`cin`),
+  CONSTRAINT `cin` FOREIGN KEY (`cin`) REFERENCES `locataire` (`cin`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `caisse`
+--
+
+/*!40000 ALTER TABLE `caisse` DISABLE KEYS */;
+INSERT INTO `caisse` VALUES (1,80,'2018-05-05 00:00:00',66),(2,80,'2018-05-05 00:00:00',1320),(3,80,'2018-05-05 00:00:00',1354),(4,80,'2018-05-05 00:00:00',13543),(5,80,'2018-05-05 00:00:00',12358),(6,80,'2018-05-05 00:00:00',10202),(7,80,'2018-05-06 00:00:00',4165),(8,80,'2018-05-06 00:00:00',416),(9,100,'2018-05-06 00:00:00',4165),(10,100,'2018-05-06 00:00:00',41656),(11,60,'2018-05-06 00:00:00',416565),(12,25,'2018-05-06 00:00:00',6667),(13,50,'2018-05-06 00:00:00',6667),(14,50,'2018-05-06 00:00:00',66670),(15,100,'2018-05-06 00:00:00',66677),(16,100,'2018-05-06 00:00:00',59988),(17,100,'2018-05-06 00:00:00',5998),(18,100,'2018-05-06 00:00:00',599814),(19,100,'2018-05-06 00:00:00',599811),(20,100,'2018-05-06 00:00:00',599810),(21,80,'2018-05-06 00:00:00',599812),(22,80,'2018-05-06 00:00:00',599812),(23,100,'2018-05-06 00:00:00',599815),(24,100,'2018-05-06 00:00:00',599816),(25,45,'2018-05-06 00:00:00',55555555),(26,30,'2018-05-06 00:00:00',55555551),(27,80,'2018-05-06 00:00:00',55555559),(28,150,'2018-05-06 00:00:00',55555558),(29,150,'2018-05-06 00:00:00',55555557),(30,150,'2018-05-06 00:00:00',55555550),(31,150,'2018-05-06 00:00:00',55555550),(32,150,'2018-05-06 00:00:00',55555549),(33,50,'2018-05-06 00:00:00',5554),(34,150,'2018-05-06 00:00:00',99999),(35,75,'2018-05-06 00:00:00',999995);
+/*!40000 ALTER TABLE `caisse` ENABLE KEYS */;
+
+--
+-- Table structure for table `chambre`
+--
+
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `chambre` (
+  `etage` int(1) NOT NULL default '0',
+  `suite` int(1) NOT NULL default '0',
+  `chmbr` int(1) NOT NULL default '0',
+  `capacite` int(1) default NULL,
+  `nb_place_despo` int(1) default NULL,
+  PRIMARY KEY  (`etage`,`suite`,`chmbr`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `chambre`
+--
+
+/*!40000 ALTER TABLE `chambre` DISABLE KEYS */;
+INSERT INTO `chambre` VALUES (1,1,1,2,0),(1,1,2,2,1),(1,2,1,2,2),(1,2,2,2,0),(1,3,1,2,2),(1,3,2,2,2),(1,4,1,1,1),(1,4,2,2,2),(2,1,1,2,-1),(2,1,2,2,2),(2,2,1,2,0),(2,2,2,2,2),(2,3,1,2,0),(2,3,2,2,2),(2,4,1,2,1),(2,4,2,2,2),(3,1,1,2,-1),(3,1,2,2,-1),(3,2,1,2,1),(3,2,2,2,-1),(3,3,1,2,-1),(3,3,2,0,-1),(3,4,1,2,2),(3,4,2,2,2),(4,1,1,2,2),(4,1,2,2,2),(4,2,1,2,2),(4,2,2,2,1),(4,3,1,2,0),(4,3,2,2,2),(4,4,1,2,1),(4,4,2,2,2);
+/*!40000 ALTER TABLE `chambre` ENABLE KEYS */;
+
+--
+-- Table structure for table `locataire`
+--
+
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `locataire` (
+  `cin` int(8) NOT NULL default '0',
+  `nom` varchar(20) default NULL,
+  `prenom` varchar(30) default NULL,
+  `date_naiss` date default NULL,
+  `sexe` varchar(5) default NULL,
+  `tel` int(8) default NULL,
+  `nomgard` varchar(40) default NULL,
+  `telgard` int(8) default NULL,
+  `etudiant` varchar(25) default NULL,
+  `niveau` varchar(50) default NULL,
+  `adr` varchar(50) default NULL,
+  PRIMARY KEY  (`cin`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `locataire`
+--
+
+/*!40000 ALTER TABLE `locataire` DISABLE KEYS */;
+INSERT INTO `locataire` VALUES (1,'','','2017-05-09','Homme',1,'o',11,'Etudiant','vbfg','ii'),(3,'','','2018-05-05','Homme',2,'gf',32,'Etudiant','vdfvd','v<sfd'),(4,'e','d','1998-10-29','Femme',44,'h',1,'Non Etudinat',NULL,''),(5,'s','','2018-05-01','',22,'0kl',2,'Non Etudinat',NULL,'okii'),(6,'f','s','2018-05-01','',6,'v s',33,'Non Etudinat',NULL,'v'),(10,'qsdq','cvqd  qd','2003-05-12','Homme',6,'dfg',6,'Etudiant','gdf',''),(11,'25','25','2018-05-05','Femme',2000,'fghhf',20,'Non Etudinat',NULL,'hfg'),(14,'wgfdrg','wdfg gdfgd ','2004-06-09','Homme',321,'wfdb',687,'Non Etudinat',NULL,'wb'),(15,'','','1993-05-04','',25,'jdt',14,'Etudiant','MPO','ghjj          uyt'),(40,'','','2003-05-13','Homme',52,'jhu',63,'Non Etudinat',NULL,'klijop'),(66,'','','2013-05-13','Femme',25,'db',10,'Non Etudinat',NULL,'dwsgbdf'),(98,'','','1988-12-27','Femme',456,'dfv',5,'Etudiant','sdvcsdvsdvsdv',''),(101,'qsdq','cvqd  qd','2003-05-12','Homme',6,'dfg',6,'Etudiant','gdf',''),(104,'qsdq','cvqd  qd','2003-05-12','Homme',6,'dfg',6,'Etudiant','gdf',''),(122,'fds','sfd','1993-09-21','Femme',14,'fg',135,'Non Etudinat',NULL,'gfgf'),(132,'','','1994-06-22','Femme',545,'cs',2322356,'Non Etudinat',NULL,'sc '),(151,'','','1993-05-04','',25,'jdt',14,'Non Etudinat',NULL,'ghjj          uyt'),(210,' dbgh ','dbgb','1994-06-15','Homme',564,'bdfgb',45,'Non Etudinat',NULL,'sbg'),(245,'','','2018-05-06','Homme',245,'44',24,'Etudiant','425','42'),(330,'','','2018-05-05','Homme',2,'gf',32,'Etudiant','vdfvd','v<sfd'),(416,'','','2018-05-06','Femme',46,'cvb',1651,'Non Etudinat',NULL,'xvbxv'),(1010,'qsdq','cvqd  qd','2003-05-12','Homme',6,'dfg',6,'Etudiant','gdf',''),(1012,'qsdq','cvqd  qd','2003-05-12','Homme',6,'dfg',6,'Etudiant','gdf',''),(1320,'','','1994-06-22','Femme',545,'cs',2322356,'Non Etudinat',NULL,'sc '),(1321,'A','CF','2018-05-06','Homme',5416,'dc',1586,'Etudiant','cdPcd','dcdc'),(1354,'SMLIcsd','csdc','2009-05-26','Femme',268,'csdc',33,'Non Etudinat',NULL,'csdcc'),(1654,'','','2018-05-06','',4156,'jjj!',2404,'Non Etudinat',NULL,'jj'),(2010,'dsc','csd','1994-06-14','Femme',550009,'zfe',605,'Non Etudinat',NULL,'dscf fs sdf           fze'),(2020,'','','1993-05-18','Homme',44,'U',41,'Non Etudinat',NULL,'21'),(4165,'','','2018-05-06','Femme',46,'cvb',1651,'Non Etudinat',NULL,'xvbxv'),(5554,'','','2018-05-06','Homme',45,'dsq',135,'Non Etudinat',NULL,'qdsd'),(5998,'','','2018-05-06','Homme',245,'44',24,'Non Etudinat',NULL,'42'),(6667,'','','2018-05-06','Femme',245,'44',24,'Non Etudinat',NULL,'42'),(9000,'','','1998-10-28','Femme',40,'dsf',642,'Non Etudinat',NULL,'fz'),(10202,'sgfgsfg','sgf','2009-09-17','Femme',5454,'sfgsf',3203,'Non Etudinat',NULL,'sfg'),(12358,'','','1997-09-16','Femme',55,'vf',55,'Non Etudinat',NULL,'dfg'),(13210,'A','CF','2018-05-06','Homme',5416,'dc',1586,'Etudiant','cdPcd','dcdc'),(13543,'SMLIcsd','csdc','2009-05-26','Femme',2681,'csdc',33,'Non Etudinat',NULL,'csdcc'),(41656,'','','2018-05-06','Femme',46,'cvb',1651,'Non Etudinat',NULL,'xvbxv'),(59980,'','','2018-05-06','Homme',245,'44',24,'Non Etudinat',NULL,'42'),(59985,'','','2018-05-06','Femme',245,'44',24,'Non Etudinat',NULL,'42'),(59988,'','','2018-05-06','Homme',245,'44',24,'Non Etudinat',NULL,'42'),(66670,'','','2018-05-06','Homme',245,'44',24,'Non Etudinat',NULL,'42'),(66677,'','','2018-05-06','Homme',245,'44',24,'Non Etudinat',NULL,'42'),(95552,'','','2008-12-30','Homme',5,'cxd',3,'Non Etudinat',NULL,'dg'),(95555,'','','2008-12-30','Homme',5,'cxd',3,'Non Etudinat',NULL,'dg'),(99999,'','','2018-05-06','Homme',3,'563',3563,'Non Etudinat',NULL,'3563'),(123654,'ALIM','SDLK','1988-12-26','Homme',66,'cd',8520,'Etudiant','dCdC','sdc DEZFD'),(132024,'X','CV','2008-12-30','Homme',100147,'cx',1265841,'Etudiant','cxcx','cxcxc'),(416560,'','','2018-05-06','Femme',46,'cvb',1651,'Etudiant','dsq','xvbxv'),(416565,'','','2018-05-06','Homme',46,'cvb',1651,'Non Etudinat',NULL,'xvbxv'),(599810,'','','2018-05-06','Homme',245,'44',24,'Non Etudinat',NULL,'42'),(599811,'','','2018-05-06','Homme',245,'44',24,'Non Etudinat',NULL,'42'),(599812,'','','2018-05-06','Femme',245,'44',24,'Non Etudinat',NULL,'42'),(599814,'','','2018-05-06','Femme',245,'44',24,'Non Etudinat',NULL,'42'),(599815,'','','2018-05-06','Homme',245,'44',24,'Non Etudinat',NULL,'42'),(599816,'','','2018-05-06','Femme',245,'44',24,'Non Etudinat',NULL,'42'),(600021,'','','2014-06-11','Homme',28,'8mlp',620,'Non Etudinat',NULL,''),(666665,'s','','1990-01-31','Homme',54,'cs',6,'Non Etudinat',NULL,'sc'),(999995,'','','2018-05-06','Homme',3,'563',3563,'Non Etudinat',NULL,'3563'),(1220524,'fds','sfd','1993-09-21','Femme',144,'fg',135,'Non Etudinat',NULL,'gfgf'),(1346798,'FATMA','MAJDOUB','1997-10-13','Femme',20000,'OMAR',2015498,'Etudiant','LFCH2(FSG)','ZarziS MEDNIN'),(11096480,'df','ben Belgacem','1997-11-12','Homme',50200281,'Nourddine',25278047,'Non Etudinat',NULL,'Bir ali -SFAX'),(11096481,'Slim','ben Belgacem','1997-11-12','Homme',50200281,'Nourddine',25278047,'Non Etudinat',NULL,'Bir ali -SFAX'),(13467985,'FATMA','MAJDOUB','1997-10-13','Femme',20000,'OMAR',2015498,'Etudiant','LFCH2(FSG)','ZarziS MEDNIN'),(13467986,'FATMA','MAJDOUB','1997-10-13','Femme',20000,'OMAR',2015498,'Etudiant','LFCH2(FSG)','ZarziS MEDNIN'),(55555549,'','','2018-05-06','Homme',546,'032',23,'Non Etudinat',NULL,''),(55555550,'','','2018-05-06','Femme',546,'032',23,'Non Etudinat',NULL,''),(55555551,'','','2018-05-06','Femme',31,'165',13,'Non Etudinat',NULL,''),(55555555,'','','2018-05-06','Homme',31,'165',13,'Non Etudinat',NULL,''),(55555557,'','','2018-05-06','Femme',546,'032',23,'Non Etudinat',NULL,''),(55555558,'','','2018-05-06','Homme',546,'032',23,'Non Etudinat',NULL,''),(55555559,'','','2018-05-06','Femme',456,'1635',156,'Non Etudinat',NULL,'vgj');
+/*!40000 ALTER TABLE `locataire` ENABLE KEYS */;
+
+--
+-- Table structure for table `location`
+--
+
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `location` (
+  `etage` int(1) NOT NULL default '0',
+  `suite` int(1) NOT NULL default '0',
+  `chmbr` int(1) NOT NULL default '0',
+  `cin` int(8) NOT NULL default '0',
+  `date_debut` date default NULL,
+  `date_fin` date default NULL,
+  PRIMARY KEY  (`etage`,`suite`,`chmbr`,`cin`),
+  KEY `cin` (`cin`),
+  CONSTRAINT `location_ibfk_1` FOREIGN KEY (`cin`) REFERENCES `locataire` (`cin`),
+  CONSTRAINT `location_ibfk_2` FOREIGN KEY (`etage`, `suite`, `chmbr`) REFERENCES `chambre` (`etage`, `suite`, `chmbr`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `location`
+--
+
+/*!40000 ALTER TABLE `location` DISABLE KEYS */;
+INSERT INTO `location` VALUES (1,1,1,11096480,'2018-05-01','2018-05-07'),(1,1,1,11096481,'2018-05-01','0001-01-01'),(1,1,2,600021,'2018-05-05','2001-01-01'),(1,2,2,99999,'2018-05-06','2018-06-30'),(1,2,2,999995,'2018-05-06','2018-06-30'),(2,1,1,5,'2018-05-01','0001-01-01'),(2,1,1,245,'2018-05-06','2018-05-11'),(2,1,1,5998,'2018-05-06','2018-06-06'),(2,1,1,6667,'2018-05-06','2018-05-11'),(2,1,1,59980,'2018-05-06','2018-05-11'),(2,1,1,59985,'2018-05-06','2018-05-11'),(2,1,1,59988,'2018-05-06','2018-06-06'),(2,1,1,66670,'2018-05-06','2018-05-11'),(2,1,1,66677,'2018-05-06','2018-06-06'),(2,1,1,599810,'2018-05-06','2018-06-30'),(2,1,1,599811,'2018-05-06','2018-06-06'),(2,1,1,599812,'2018-05-06','2018-06-30'),(2,1,1,599814,'2018-05-06','2018-06-06'),(2,1,1,599815,'2018-05-06','2018-06-30'),(2,1,1,599816,'2018-05-06','2018-06-06'),(2,2,1,1654,'2018-05-06','2018-06-30'),(2,2,1,5554,'2018-05-06','2018-06-30'),(2,3,1,95552,'2018-05-05','2001-01-01'),(2,3,1,95555,'2018-05-05','2001-01-01'),(2,4,1,55555559,'2018-05-06','2018-06-30'),(3,1,1,416,'2018-05-06','2018-06-30'),(3,1,1,4165,'2018-05-06','2018-06-30'),(3,1,2,122,'2018-05-05','2018-06-30'),(3,1,2,55555551,'2018-05-06','2018-05-09'),(3,1,2,55555555,'2018-05-06','2018-05-09'),(3,2,1,10202,'2018-05-05','2018-06-30'),(3,2,2,6,'2018-05-01','0001-01-01'),(3,2,2,66,'2018-05-05','2018-06-30'),(3,2,2,2010,'2018-05-05','2018-06-30'),(3,3,1,4,'2018-05-01','0001-01-01'),(3,3,1,12358,'2018-05-05','2018-06-30'),(3,3,1,666665,'2018-05-05','0000-00-00'),(3,3,1,55555549,'2018-05-06','2018-06-06'),(3,3,1,55555550,'2018-05-06','2018-06-06'),(3,3,1,55555557,'2018-05-06','2018-06-30'),(3,3,1,55555558,'2018-05-06','2018-06-30'),(3,3,2,11,'2018-05-05','2018-06-30'),(3,3,2,151,'2018-05-05','2018-06-30'),(3,3,2,1354,'2018-05-05','2018-06-30'),(3,3,2,9000,'2018-05-05','2018-06-30'),(3,3,2,13543,'2018-05-05','2018-06-30'),(4,2,2,1220524,'2018-05-05','2018-06-30'),(4,3,1,132,'2018-05-05','2018-06-30'),(4,3,1,1320,'2018-05-05','2018-06-30'),(4,4,1,14,'2018-05-05','2018-06-30');
+/*!40000 ALTER TABLE `location` ENABLE KEYS */;
+
+--
+-- Table structure for table `payement`
+--
+
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `payement` (
+  `cin` int(8) NOT NULL default '0',
+  `mois` int(2) default NULL,
+  `etat` varchar(10) default NULL,
+  PRIMARY KEY  (`cin`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `payement`
+--
+
+/*!40000 ALTER TABLE `payement` DISABLE KEYS */;
+INSERT INTO `payement` VALUES (416,5,'Paye(é)'),(4165,5,'Paye(é)'),(5998,5,'Paye(é)'),(6667,5,'Paye(é)'),(10202,5,'Paye(é)'),(41656,5,'Paye(é)'),(59988,5,'Paye(é)'),(66670,5,'Paye(é)'),(66677,5,'Paye(é)'),(99999,5,'Paye(é)'),(416565,5,'Paye(é)'),(599810,5,'Paye(é)'),(599811,5,'Paye(é)'),(599812,5,'Paye(é)'),(599814,5,'Paye(é)'),(599815,5,'Paye(é)'),(599816,5,'Paye(é)'),(999995,5,'Non Payé/e'),(55555549,5,'Paye(é)'),(55555550,5,'Paye(é)'),(55555551,5,'Paye(é)'),(55555555,5,'Paye(é)'),(55555557,5,'Paye(é)'),(55555558,5,'Paye(é)'),(55555559,5,'Paye(é)');
+/*!40000 ALTER TABLE `payement` ENABLE KEYS */;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2018-05-07 21:29:26
