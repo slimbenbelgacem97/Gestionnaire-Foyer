@@ -7,7 +7,7 @@ Cette application est développé pour gestionner un foyer mixte.
 Elle a comme fonctionnalités:  
 ## 1 . Réservation d'un  locataire.
 ![ScreenShot](https://github.com/slimbenbelgacem97/Gestionnaire-Foyer/blob/main/2.png)
-## 2. Affichers les chambres vides.
+## 2. Afficher les chambres vides.
  Remarque: La gride de chambres est vide car la base de données est encore vide
    ![ScreenShot](https://github.com/slimbenbelgacem97/Gestionnaire-Foyer/blob/main/3.png)
 ## 3. Gérer la caisse du foyer et l'état de payement. 
